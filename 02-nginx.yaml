@@ -12,3 +12,8 @@
         name: nginx
         state: started
         enabled: yes
+
+  - name: verify nginx is running
+    ansible.builtin.shell: "which nginx"
+    register: nginx_check
+    failed_when: nginx_check.rc != 0
